@@ -1,0 +1,5 @@
+"Defiendo los tipos para Graphql"
+type Query {
+  hola: String!
+  holaConNombre(nombre: String!): String!
+}
