@@ -1,7 +1,9 @@
 "Defiendo los tipos para Graphql"
 type Query {
-  "Lista de los estudiantes"
+  "Lista de todos los estudiantes"
   estudiantes: [Estudiante!]!
+  "Obteniendo un único estudiante por ID"
+  estudiante(id: ID!): Estudiante!
 }
 
 "Campos para los estudiantes"
