@@ -2,8 +2,12 @@
 type Query {
   "Lista de todos los estudiantes"
   estudiantes: [Estudiante!]!
-  "Obteniendo un único estudiante por ID"
-  estudiante(id: ID!): Estudiante!
+  "Obteniendo un único estudiante por id"
+  estudiante(estudainteId: ID!): Estudiante!
+  "Lista de todos los cursos"
+  cursos: [Curso!]!
+  "Información de un determinado curso por id"
+  curso(cursoId: ID!): Curso!
 }
 
 "Campos para los estudiantes"
