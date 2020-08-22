@@ -7,6 +7,7 @@ import { createServer } from 'http';
 import schema from './schema';
 
 const app = express();
+const path = '/apis/gql/graphql';
 const PORT = process.env.PORT || 3000;
 
 app.use('*', cors());
@@ -17,10 +18,10 @@ const server = new ApolloServer({
   introspection: true,
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, path });
 
 const httpServer = createServer(app);
 
 httpServer.listen(PORT, () =>
-  console.log(`Servidor http://localhost:${PORT}/apis/gql/graphql`)
+  console.log(`Servidor http://localhost:${PORT}${server.graphqlPath}`)
 );
