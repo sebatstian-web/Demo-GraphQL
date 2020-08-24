@@ -41,8 +41,8 @@ const mutation: IResolvers = {
       };
     },
     modificarCurso(__: void, { curso }): any {
-      const eleExiste = _.findIndex(db.cursos, function (o) {
-        return o.id === curso.id;
+      const eleExiste = _.findIndex(db.cursos, (el) => {
+        return el.id === curso.id;
       });
 
       if (eleExiste > -1) {
@@ -63,6 +63,28 @@ const mutation: IResolvers = {
         teacher: '',
         reviews: [],
       };
+    },
+    eliminarCurso(__: void, { cursoId }): any {
+      const cursoBorrado = _.remove(db.cursos, (el) => {
+        return el.id === cursoId;
+      });
+
+      if (!cursoBorrado[0]) {
+        return {
+          id: '-1',
+          title: `No existe curso con ID ${cursoId} en la base de datos`,
+          description: '',
+          clases: -1,
+          time: 0.0,
+          level: 'TODOS',
+          logo: '',
+          path: '',
+          teacher: '',
+          reviews: [],
+        };
+      }
+
+      return cursoBorrado[0];
     },
   },
 };
